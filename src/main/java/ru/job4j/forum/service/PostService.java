@@ -2,11 +2,11 @@ package ru.job4j.forum.service;
 
 import org.springframework.stereotype.Service;
 import ru.job4j.forum.model.Post;
+import ru.job4j.forum.repository.PostRepository;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Egor Geraskin(yegeraskin13@gmail.com)
@@ -15,27 +15,24 @@ import java.util.Map;
  */
 @Service
 public class PostService {
-    private final Map<Integer, Post> posts = new HashMap<>();
-    private int id = 1;
+    private final PostRepository rep;
 
-    public PostService() {
-        save(Post.of("Продаю машину ладу 01.", ""));
+    public PostService(PostRepository rep) {
+        this.rep = rep;
     }
 
     public List<Post> getAll() {
-        return new ArrayList<>(posts.values());
+        List<Post> result = new LinkedList<>();
+        rep.findAll().forEach(result::add);
+        return result;
     }
 
     public Post save(Post post) {
-        if (post.getId() == 0) {
-            post.setId(id);
-            id++;
-        }
-        posts.put(post.getId(), post);
+        rep.save(post);
         return post;
     }
 
     public Post get(int id) {
-        return posts.get(id);
+        return rep.findById((long) id).orElse(null);
     }
 }

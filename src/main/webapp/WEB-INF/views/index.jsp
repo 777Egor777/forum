@@ -24,7 +24,7 @@
             <tr>
                 <th>Тема</th>
                 <th>Описание</th>
-                <th>Дата создания</th>
+                <th>Создан</th>
                 <th>Update</th>
             </tr>
             </thead>
