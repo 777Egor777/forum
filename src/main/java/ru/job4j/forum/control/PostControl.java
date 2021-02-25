@@ -21,6 +21,9 @@ public class PostControl {
 
     @PostMapping("/save")
     public String save(@ModelAttribute Post post) {
+        if (post.getId() != 0) {
+            post.setCreated(service.get(post.getId()).getCreated());
+        }
         service.save(post);
         return "redirect:/index";
     }
@@ -31,6 +34,7 @@ public class PostControl {
         Post post = new Post();
         if (id != null) {
             post = service.get(id);
+            System.out.println(id + " " + post);
         }
         model.addAttribute("post", post);
         return "edit";

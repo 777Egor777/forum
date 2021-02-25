@@ -5,6 +5,7 @@ import ru.job4j.forum.model.Post;
 import ru.job4j.forum.repository.PostRepository;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,11 +29,14 @@ public class PostService {
     }
 
     public Post save(Post post) {
+        if (post.getId() == 0) {
+            post.setCreated(new Date(System.currentTimeMillis()));
+        }
         rep.save(post);
         return post;
     }
 
-    public Post get(int id) {
-        return rep.findById((long) id).orElse(null);
+    public Post get(Integer id) {
+        return rep.findById(id).orElse(null);
     }
 }

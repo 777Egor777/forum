@@ -16,6 +16,15 @@
 <body>
 <div class="container pt-3">
     <div class="row">
+        <table class="table">
+            <thead>
+            <tr>
+                <th><input type="button" value="Добавить тему" onclick="window.location.href = '/edit'"/></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="row">
         <h4>Форум job4j. Список тем.</h4>
     </div>
     <div class="row">
@@ -35,8 +44,8 @@
                 </c:url>
                 <tr>
                     <td><c:out value="${post.name}"/></td>
-                    <td><c:out value="${post.desc}"/></td>
-                    <td></td>
+                    <td><c:out value="${post.description}"/></td>
+                    <td><c:out value="${post.created}"/></td>
                     <td><input type="button" value="Update" onclick="window.location.href = '${updateButton}'"/></td>
                 </tr>
             </c:forEach>

@@ -1,12 +1,10 @@
 package ru.job4j.forum.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * @author Egor Geraskin(yegeraskin13@gmail.com)
@@ -21,14 +19,15 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
-    private String desc;
-    private Calendar created = Calendar.getInstance();
+    private String description;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date created;
 
     public static Post of(String name, String desc) {
         Post post = new Post();
         post.name = name;
-        post.desc = desc;
-        post.created = Calendar.getInstance();
+        post.description = desc;
         return post;
     }
 }

@@ -8,5 +8,5 @@ import ru.job4j.forum.model.Post;
  * @version 1.0
  * @since 25.02.2021
  */
-public interface PostRepository extends CrudRepository<Post, Long> {
+public interface PostRepository extends CrudRepository<Post, Integer> {
 }

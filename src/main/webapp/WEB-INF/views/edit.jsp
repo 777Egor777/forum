@@ -18,7 +18,7 @@
     <div class="row">
         <h4>Форум job4j. Создание и редактирование темы.</h4>
     </div>
-    <form name='login' action="<c:url value='/save'/>" method='POST'>
+    <form action="<c:url value='/save'/>" method='POST'>
         <table>
             <input type ='hidden' name = "id" value = "${post.id}"/>
             <tr>
@@ -27,7 +27,7 @@
             </tr>
             <tr>
                 <td>Описание темы:</td>
-                <td><input type='text' name='desc' value="${post.desc}"/></td>
+                <td><input type='text' name='description' value="${post.description}"/></td>
             </tr>
             <tr>
                 <td colspan='2'><input name="submit" type="submit" value="Submit" /></td>
