@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/777Egor777/job4j_dreamjob.svg?branch=master)](https://travis-ci.org/777Egor777/job4j_dreamjob)
+[![Build Status](https://travis-ci.org/777Egor777/forum.svg?branch=master)](https://travis-ci.org/777Egor777/forum)
+[![codecov](https://codecov.io/gh/777Egor777/forum/branch/master/graph/badge.svg?token=97W8RY54BR)](https://codecov.io/gh/777Egor777/forum)
 
 # Проект "Форум Spring Boot"
 
