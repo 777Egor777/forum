@@ -11,28 +11,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Форум job4j. Регистрация.</title>
+    <title>Форум job4j. Редактирование поста</title>
 </head>
 <body>
 <div class="container mt-3">
     <div class="row">
-        <input type="button" value="Авторизация" onclick="window.location.href = '/login'"/>
+        <h4>Форум job4j. Редактирование поста.</h4>
     </div>
-    <div class="row">
-        <h4>Форум job4j. Регистрация.</h4>
-    </div>
-    <form name='login' action="<c:url value='/reg'/>" method='POST'>
+    <form action="<c:url value='/subpost/save'/>" method='POST'>
         <table>
+            <input type ='hidden' name = "postId" value = "${postId}"/>
+            <input type ='hidden' name = "id" value = "${sub.id}"/>
             <tr>
-                <td>UserName:</td>
-                <td><input type='text' name='username'></td>
+                <td>Заголовок: </td>
+                <td><input type='text' name='header' value="${sub.header}"/></td>
             </tr>
             <tr>
-                <td>Password:</td>
-                <td><input type='password' name='password'/></td>
+                <td>Содержание: </td>
+                <td><input type='text' name='content' value="${sub.content}"/></td>
             </tr>
             <tr>
-                <td colspan='2'><input name="submit" type="submit" value="Отправить" /></td>
+                <td colspan='2'><input name="submit" type="submit" value="Submit" /></td>
             </tr>
         </table>
     </form>

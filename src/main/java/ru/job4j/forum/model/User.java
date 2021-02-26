@@ -1,9 +1,6 @@
 package ru.job4j.forum.model;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.Generated;
-import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -19,13 +16,16 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String name;
-    private String pass;
+    private String username;
+    private String password;
+    @ManyToOne
+    private Authority authority;
+    private boolean enabled;
 
     public static User of(String name, String pass) {
         User user = new User();
-        user.name = name;
-        user.pass = pass;
+        user.username = name;
+        user.password = pass;
         return user;
     }
 }

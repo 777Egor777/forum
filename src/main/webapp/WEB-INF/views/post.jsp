@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-    <title>Форум job4j. Главная</title>
+    <title>Форум job4j. Тема: ${post.name}</title>
 </head>
 <body>
 <div class="container pt-3">
@@ -27,21 +27,21 @@
                     <input type="button" value="Главная" onclick="window.location.href = '/'"/>
                 </th>
             </tr>
-            <tr>
-                <th><input type="button" value="Добавить тему" onclick="window.location.href = '/edit'"/></th>
-            </tr>
             </thead>
         </table>
     </div>
     <div class="row">
-        <h4>Форум job4j. Список тем.</h4>
+        <h6>Тема: ${post.name}</h6>
+    </div>
+    <div class="row">
+        <h6>Посты:</h6>
     </div>
     <div class="row">
         <table class="table">
             <thead>
             <tr>
-                <th>Тема</th>
-                <th>Описание</th>
+                <th>Заголовок</th>
+                <th>Содержание</th>
                 <th>Создан</th>
                 <th>Автор</th>
                 <th>Update</th>
@@ -49,30 +49,52 @@
             </tr>
             </thead>
             <tbody>
-            <c:forEach items="${posts}" var="post">
-                <c:url var="updateButton" value="/edit">
-                    <c:param name="id" value="${post.id}"/>
+            <c:forEach items="${subs}" var="sub">
+                <c:url var="updateButton" value="subpost/update">
+                    <c:param name="subId" value="${sub.id}"/>
+                    <c:param name="postId" value="${post.id}"/>
                 </c:url>
-                <c:url var="deleteButton" value="/delete">
-                    <c:param name="id" value="${post.id}"/>
-                </c:url>
-                <c:url var="goToSubposts" value="/post">
+                <c:url var="deleteButton" value="subpost/delete">
+                    <c:param name="subId" value="${sub.id}"/>
                     <c:param name="postId" value="${post.id}"/>
                 </c:url>
                 <tr>
-                    <td><a href="${goToSubposts}"><c:out value="${post.name}"/></a></td>
-                    <td><c:out value="${post.description}"/></td>
+                    <td><c:out value="${sub.header}"/></td>
+                    <td><c:out value="${sub.content}"/></td>
                     <td>
-                        <fmt:formatDate value="${post.created.time}" type="date"
+                        <fmt:formatDate value="${sub.created.time}" type="date"
                                         dateStyle="long"/>
                     </td>
-                    <td>${post.author}</td>
+                    <td>${sub.author}</td>
                     <td><input type="button" value="Update" onclick="window.location.href = '${updateButton}'"/></td>
                     <td><input type="button" value="Delete" onclick="window.location.href = '${deleteButton}'"/></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
+    </div>
+</div>
+<div class="container pt-3">
+    <div class="row">
+        <h6>Добавить пост: </h6>
+    </div>
+    <div class="row">
+        <form action="<c:url value='/subpost/save'/>" method='POST'>
+            <table>
+                <input type ='hidden' name = "postId" value = "${post.id}"/>
+                <tr>
+                    <td>Заголовок: </td>
+                    <td><input type='text' name='header'/></td>
+                </tr>
+                <tr>
+                    <td>Содержание: </td>
+                    <td><input type='text' name='content'/></td>
+                </tr>
+                <tr>
+                    <td colspan='2'><input name="submit" type="submit" value="Submit" /></td>
+                </tr>
+            </table>
+        </form>
     </div>
 </div>
 
