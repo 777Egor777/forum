@@ -88,7 +88,7 @@
                 </tr>
                 <tr>
                     <td>Содержание: </td>
-                    <td><input type='text' name='content'/></td>
+                    <td><textarea name='content' rows="10" cols="30"></textarea></td>
                 </tr>
                 <tr>
                     <td colspan='2'><input name="submit" type="submit" value="Submit" /></td>
