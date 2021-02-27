@@ -14,3 +14,6 @@ create table subpost (
     posts_id int references posts(id),
     author text
 );
+
+insert into posts (name, description, author) values ('О чем этот форум?', '..', 'Admin');
+insert into posts (name, description, author) values ('Правила форума.', '..', 'Admin');

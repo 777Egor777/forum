@@ -27,7 +27,7 @@ public class PostService {
 
     public List<Post> getAll() {
         List<Post> result = new LinkedList<>();
-        rep.findAll().forEach(result::add);
+        rep.findByOrderByIdAsc().forEach(result::add);
         return result;
     }
 

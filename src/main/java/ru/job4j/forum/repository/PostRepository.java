@@ -13,4 +13,5 @@ import java.util.Set;
  */
 public interface PostRepository extends CrudRepository<Post, Integer> {
     Post findById(int id);
+    Iterable<Post> findByOrderByIdAsc();
 }

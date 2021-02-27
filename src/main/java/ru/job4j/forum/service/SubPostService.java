@@ -49,7 +49,7 @@ public class SubPostService {
 
     public List<SubPost> getAllByPostId(int id) {
         List<SubPost> result = new LinkedList<>();
-        rep.findAllByPostId(id).forEach(result::add);
+        rep.findAllByPostIdOrderByIdAsc(id).forEach(result::add);
         return result;
     }
 }
