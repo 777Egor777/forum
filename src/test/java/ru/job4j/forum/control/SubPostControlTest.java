@@ -48,8 +48,8 @@ public class SubPostControlTest {
     @WithMockUser
     public void shouldReturnDefaultMessagePostMethod() throws Exception {
         this.mockMvc.perform(post("/subpost/save")
-                .param("header","Куплю ладу-грант. Дорого.")
-                .param("postId","1"))
+                .param("header", "Куплю ладу-грант. Дорого.")
+                .param("postId", "1"))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
         ArgumentCaptor<SubPost> argument = ArgumentCaptor.forClass(SubPost.class);

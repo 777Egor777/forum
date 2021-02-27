@@ -12,6 +12,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import ru.job4j.forum.Main;
 import ru.job4j.forum.model.Post;
 import ru.job4j.forum.service.PostService;
+import ru.job4j.forum.service.SubPostService;
+
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
@@ -43,7 +45,7 @@ public class PostControlTest {
     @WithMockUser
     public void shouldReturnDefaultMessagePostMethod() throws Exception {
         this.mockMvc.perform(post("/save")
-                .param("name","Куплю ладу-грант. Дорого."))
+                .param("name", "Куплю ладу-грант. Дорого."))
                 .andDo(print())
                 .andExpect(status().is3xxRedirection());
         ArgumentCaptor<Post> argument = ArgumentCaptor.forClass(Post.class);
