@@ -9,5 +9,5 @@ import ru.job4j.forum.model.SubPost;
  * @since 25.02.2021
  */
 public interface SubPostRepository extends CrudRepository<SubPost, Integer> {
-    Iterable<SubPost> findAllByPost_Id(int id);
+    Iterable<SubPost> findAllByPostId(int id);
 }
