@@ -1,11 +1,16 @@
 language: java
+sudo: false
 jdk:
 - openjdk14
+addons:
+  postgresql: '10'
 services:
 - postgresql
 before_install:
 - psql -c 'create database forum;' -U postgres
-sudo: false
+branches:
+  only:
+  - master
 install: true
 script: mvn clean package -DskipTests=true
 after_success:
@@ -15,11 +20,10 @@ notifications:
     recipients: yegeraskin13@gmail.com
     on_success: never
     on_failure: always
-
 deploy:
   provider: heroku
   api_key:
-    secure: l12kMxOlGe8uW0KJsGvVauVI2C8uLNpkcyP8CwwcT02bTF9sDJ/L+Lcb5EEHTt0pCupb9g8eRU1jifPv6ayUsVXKSHwwctVolhR6V9K3onORh7sFRX77O3fBt+g2JSLCKoMHlOXv9Pab0zFAPVvozF+jGrE8UunlLLeKotU+DY2MhGQfizQqelfsrN916zAIWowqu4ECOeReaOH0JZ+PmhxQahz/TaqK3Xfz7j7s8lIF/wlGaXJo7WO2m6IgveUOpICCorJijBpL2sKpuzQdSo2SCRjRp337dv1WWK/4YXv8rz9MZjSHpaeURYiIn7yKkNZczSGxvX65VgkjHPaU3vh2lKEedFoo5gRy/C9TZwzUjRGM4M04ZR2+WpoV4N6WA9n5AB5RAbVrwsuXZYTF+mit1IYuRm+I573Z+InfQ0/8bAZs+AMvbLMUM8F4wGdCJP6i9Z/x7Z+a7d0qNHhJdyb0DEVPo9DKlU2KLpYloccKz5xRA6ytY3FCGTcH1P3rEX5ycsvhQ22Cexd5m9SZ9+VvxSr+FhjZUWeiEnS7/xki2k06sJM5Y3zs7g0fRtAm0HdGgBwJfQUS8YuVdrlNnaXFiQfvEcxUgNy09vIN7Ifc55FS547CXSYE+W1Z6uAoE0srb8wCbAKMFcMKyHaX5OYecQwpVymP+pOrXY4DwwU=
+    secure: PCtZLAAnk1WXEh5G+YL23R7sanRWWi6bEPzSnDWBl3AaHzK96ZUCVNETXrWQU8kyP+jGEi7HDOeQwRDCLUuIa+5Gk9x4DvTSN294Iakz+RX8AgXRpn+Bma6WPfdNfZNsFU7nD03AC1OFGBc1UrBHfBYjhB3qAmXVkWPTcsZytTgEzPm8BAniBw9Qwk6nmHYCxOUO4bFx8keroaZYa5DSyv7SE+p7nqHy4PaIKLp0sXxQarlddwm7Sly+m4hQskgqURtrChSUXhJ7se4z1tfngtEbVgoeI6sS/TVITsdAhiV9hg5AU0b0IzIZiPmjqjfbk7oRcnQ7RdigqC0HIERTBxy4uzbj/gccK60SVtjaWmHuGOme0XWu8qay0GnMZAKo6peUA4Q8xaPOYD2oBnS4b1wSKH1J75BcyAFGLforf4z9e6ZN7vDwgClXjMY3Dk2EP1HnnO5pSFdUlgnYxTgk00qqoU+57VtBKdPBUxWhkn6C8vQZVOSY1VdwEvQRhah5FmQlYlr37OWHI0tni5HHqx/0Q0utFh3VaEop6SY48Qyu0b+AdjpoWIaSdyxM08/r7rn1r3IyJiUeRNh3XKSM6Ybxq03A0f+9pk2UDe748gYqYu3zyXs+y6SJtaq9yANVGtBX2GsZTieK66VtzYanSyaflNPYgecNX8V2JcnLMaA=
   app: intense-retreat-50224
 env:
   global:
