@@ -11,20 +11,17 @@ before_install:
 branches:
   only:
   - master
-install: true
-script: mvn clean package -DskipTests=true
-after_success:
-- bash <(curl -s https://codecov.io/bash)
 notifications:
   email:
     recipients: yegeraskin13@gmail.com
     on_success: never
     on_failure: always
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+install: true
+script: mvn clean package -DskipTests=true
 deploy:
   provider: heroku
   api_key: 80a8f802-7552-4a4a-8b10-9039fb3184f0
     secure: PCtZLAAnk1WXEh5G+YL23R7sanRWWi6bEPzSnDWBl3AaHzK96ZUCVNETXrWQU8kyP+jGEi7HDOeQwRDCLUuIa+5Gk9x4DvTSN294Iakz+RX8AgXRpn+Bma6WPfdNfZNsFU7nD03AC1OFGBc1UrBHfBYjhB3qAmXVkWPTcsZytTgEzPm8BAniBw9Qwk6nmHYCxOUO4bFx8keroaZYa5DSyv7SE+p7nqHy4PaIKLp0sXxQarlddwm7Sly+m4hQskgqURtrChSUXhJ7se4z1tfngtEbVgoeI6sS/TVITsdAhiV9hg5AU0b0IzIZiPmjqjfbk7oRcnQ7RdigqC0HIERTBxy4uzbj/gccK60SVtjaWmHuGOme0XWu8qay0GnMZAKo6peUA4Q8xaPOYD2oBnS4b1wSKH1J75BcyAFGLforf4z9e6ZN7vDwgClXjMY3Dk2EP1HnnO5pSFdUlgnYxTgk00qqoU+57VtBKdPBUxWhkn6C8vQZVOSY1VdwEvQRhah5FmQlYlr37OWHI0tni5HHqx/0Q0utFh3VaEop6SY48Qyu0b+AdjpoWIaSdyxM08/r7rn1r3IyJiUeRNh3XKSM6Ybxq03A0f+9pk2UDe748gYqYu3zyXs+y6SJtaq9yANVGtBX2GsZTieK66VtzYanSyaflNPYgecNX8V2JcnLMaA=
   app: intense-retreat-50224
-env:
-  global:
-  - CODECOV_TOKEN="30038252-ae2d-42b5-abff-87d16dfbd410"
