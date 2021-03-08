@@ -20,6 +20,7 @@ public class IndexControlTest {
 
     @Autowired
     private MockMvc mockMvc;
+
     @Test
     @WithMockUser
     public void shouldReturnDefaultMessage() throws Exception {
